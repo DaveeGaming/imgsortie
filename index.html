@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<script src="sort_fns.js"></script>
+<script src="lib/zip-fs-full.min.js"></script>
+<script src="sorting.js"></script>
+<link rel="stylesheet" href="style.css">
+<body>
+    <div id="popup_overlay">
+        <div id="help">
+            <center>HISTORY</center>
+            <center><div>
+                <button id="clear_history">Clear history</button>
+                <button id="export_zip">Export all as zip</button>
+            </div></center>
+            
+            <table id="history_list">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Size</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <center id="total_size"></center>
+        </div>
+        <div id="keybind">
+            <center>KEYBINDS</center>
+        </div>
+    </div>
+
+    <div class="grid-container" ondrop="dropHandler(event);" ondragover="dropOverHandler(event)">
+        <div id="topbar"> 
+            <a href="#asd">About</a>
+            <a href="#idk">Sorting</a>
+            <hr>
+        </div>
+
+        <div id="topbar"> 
+            <button onclick="sortImage();">Sort</button>
+
+            <button id="open_file">Open file dialog</button>
+
+            <label for="p_sorting_fn">Sorting by</label>
+            <select name="p_sorting_fn" id="p_sorting_fn">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="hue">Hue</option>
+                <option value="saturation">Saturation</option>
+                <option value="lightness">Lightness</option>
+            </select>
+
+            <label for="sorting_fn">Sorting</label>
+            <select name="sorting_fn" id="sorting_fn">
+                <option value="whole">Whole Image</option>
+                <option value="horizontal">Horizontal Lines</option>
+                <option value="vertical">Vertical Lines</option>
+            </select>
+
+            <input type="checkbox" id="reverse_fn" name="reverse_fn" value="no">
+            <label for="reverse_fn">Reverse</label>
+
+            <input type="checkbox" id="reverse_mask" name="reverse_fn" value="no">
+            <label for="reverse_fn">Invert mask</label>
+
+            <button id="undo">Undo</button>
+            <button id="download">Download Image</button>
+        </div>
+
+        <div id="topbar"> 
+            <button id="brush">Brush</button>
+            <button id="eraser">Eraser</button>
+            <button id="clear_mask">Clear</button>
+
+            <input type="range" id="brush_size" name="brush_size" min="1" max="100" value="10">
+            <label id="brush_size_laber" for="brush_size">Brush size: 30</label>
+
+        </div>
+
+        <div id="canvas1">
+            <div id="stack">
+                <div> 
+                 <div id="centertext">
+                     Drag & Drop an image
+                 </div>
+                </div>
+                <div> <canvas id="unsorted" width="500" height="500"></canvas> </div>
+                <div> <canvas id="mask" width="500" height="500"></canvas> </div>
+            </div>
+
+        </div>  
+
+        <div id="canvas2">
+            <div id="stack">
+                <div> <p id="centertext">Sorted image will appear here</p>  </div>
+                <div> <canvas id="sorted" width="500" height="500"></canvas> </div>
+            </div>
+
+        </div>
+
+        <div id="bottombar">
+            <p id="imagesize"></p>
+            <p id="timer"></pdiv>
+        </div>
+    <div>
+</body>
